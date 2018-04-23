@@ -16,6 +16,8 @@
 		0BBB51D51E6F46393EDE9F6BEC952A7F /* LPDPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0048F99B8CB347934A15F1514E7BD32 /* LPDPhotoPreviewCell.m */; };
 		17001C0E1216EF4E213A272B7BDFE834 /* LPDPhotoPreviewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E5C5EFDB80ABEDA838D2AE00E291C23 /* LPDPhotoPreviewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17A3C738C27D8C86F359CB7A1841F105 /* LPDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C26F517D4E38565CB083311610C6896 /* LPDImageManager.m */; };
+		186D8EDA208DDD16005B3AF6 /* ZDeleteRegionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 186D8ED8208DDD16005B3AF6 /* ZDeleteRegionView.h */; };
+		186D8EDB208DDD16005B3AF6 /* ZDeleteRegionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D8ED9208DDD16005B3AF6 /* ZDeleteRegionView.m */; };
 		1C5C3F5C983DE2918253147C6B580242 /* LPDAssetCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 39477E958F0FEF7652327646C1724B81 /* LPDAssetCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26ED371D19FACE7CD3C6F642313BF73D /* LPDImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D3853035EF8F522D403819A1C0887A /* LPDImageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BF58AEE115229528AABE4FB445C18F6 /* LPDQuoteImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADAFD553B39E13F9AEA0CD5D8E8AA61 /* LPDQuoteImagesView.m */; };
@@ -64,9 +66,11 @@
 		0B7B186902F1A97430258F1F1A75BBF6 /* Pods-LPDQuoteImagesView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LPDQuoteImagesView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0C26F517D4E38565CB083311610C6896 /* LPDImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDImageManager.m; sourceTree = "<group>"; };
 		0EF5A9CA7DEBF446033A89D5FF85E89D /* NSBundle+LPDImagePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LPDImagePicker.h"; sourceTree = "<group>"; };
-		11260F748E8B4996A489CFE260B899D5 /* Pods-LPDQuoteImagesView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LPDQuoteImagesView_Tests.modulemap"; sourceTree = "<group>"; };
+		11260F748E8B4996A489CFE260B899D5 /* Pods-LPDQuoteImagesView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-LPDQuoteImagesView_Tests.modulemap"; sourceTree = "<group>"; };
 		154A3627E9E0DFE941426DCD1FA1393E /* LPDAssetModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDAssetModel.m; sourceTree = "<group>"; };
 		1823047C326C818CC87041410BDBDBA7 /* Pods-LPDQuoteImagesView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPDQuoteImagesView_Example.release.xcconfig"; sourceTree = "<group>"; };
+		186D8ED8208DDD16005B3AF6 /* ZDeleteRegionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDeleteRegionView.h; sourceTree = "<group>"; };
+		186D8ED9208DDD16005B3AF6 /* ZDeleteRegionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDeleteRegionView.m; sourceTree = "<group>"; };
 		19F881D2D1C93D88937F785ADF992972 /* LPDAssetCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDAssetCell.m; sourceTree = "<group>"; };
 		1C009D117B87B37466C7F9E0E872483D /* Pods-LPDQuoteImagesView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LPDQuoteImagesView_Example-dummy.m"; sourceTree = "<group>"; };
 		1E2CEADD90739E27F149240D2220DC3B /* Pods-LPDQuoteImagesView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LPDQuoteImagesView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		3CEE8FDDFE3AD300AC4273DB0463D182 /* LPDPhotoPickerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDPhotoPickerController.m; sourceTree = "<group>"; };
 		479F2C2DDE30B79635FA75F594ECD7B4 /* LPDImagePickerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDImagePickerController.m; sourceTree = "<group>"; };
 		4A2BEA17C21C89283E5571FAA1ADBE0C /* Pods-LPDQuoteImagesView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPDQuoteImagesView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		4D4E99C679CF71B95827DFC0BF431FFE /* Pods_LPDQuoteImagesView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LPDQuoteImagesView_Tests.framework; path = "Pods-LPDQuoteImagesView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D4E99C679CF71B95827DFC0BF431FFE /* Pods_LPDQuoteImagesView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPDQuoteImagesView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC7359CAD193EDC1F44AA6074A9474E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		566CA12776E60102007DC0871B031503 /* LPDImagePickerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LPDImagePickerController.h; sourceTree = "<group>"; };
 		5A22DCE8140BCD70038C702871B82F91 /* Pods-LPDQuoteImagesView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LPDQuoteImagesView_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -90,7 +94,7 @@
 		63375527D43DF03B5B2B708E9DA83F08 /* LPDQuoteImagesView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LPDQuoteImagesView-umbrella.h"; sourceTree = "<group>"; };
 		6828CED6A49D753D731D57BCB810B085 /* LPDQuoteImagesView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LPDQuoteImagesView.h; sourceTree = "<group>"; };
 		69F731972BA45D9AEED44EB7A545705D /* UIImage+MyBundle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MyBundle.m"; sourceTree = "<group>"; };
-		6EADA0268629280CB651CAE7CF80A1AF /* LPDQuoteImagesView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LPDQuoteImagesView.framework; path = LPDQuoteImagesView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EADA0268629280CB651CAE7CF80A1AF /* LPDQuoteImagesView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LPDQuoteImagesView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		729EECBC1A196F09D6CE89ED947F84BB /* Pods-LPDQuoteImagesView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPDQuoteImagesView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		7617E30E987EAC2F1D018203889C601D /* Pods-LPDQuoteImagesView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LPDQuoteImagesView_Example-umbrella.h"; sourceTree = "<group>"; };
 		7ADAFD553B39E13F9AEA0CD5D8E8AA61 /* LPDQuoteImagesView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDQuoteImagesView.m; sourceTree = "<group>"; };
@@ -101,14 +105,14 @@
 		8AB84ED1CE652E26BBF3537EB8B47C88 /* LPDPhotoArrangeCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LPDPhotoArrangeCell.h; sourceTree = "<group>"; };
 		8C63D57C22C1CCE01FE8EBA91887AC31 /* LPDPhotoPreviewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LPDPhotoPreviewController.h; sourceTree = "<group>"; };
 		93A182CC19D9E2B4FA4615535EAE0178 /* LPDVideoPlayerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDVideoPlayerController.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		958080432648A0609BD230E69828F63B /* UIImage+MyBundle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+MyBundle.h"; sourceTree = "<group>"; };
 		97F5D606D013833BF9A546A3ABB2BF67 /* NSBundle+LPDImagePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LPDImagePicker.m"; sourceTree = "<group>"; };
 		9C38982AE86D98D7119F4FAB7E30AE04 /* Pods-LPDQuoteImagesView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LPDQuoteImagesView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		A025A74BB397568ECA330A34B4A1426A /* LPDPhotoArrangeCVlLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDPhotoArrangeCVlLayout.m; sourceTree = "<group>"; };
 		A3384A3D1748A4A71B3D95775A582133 /* LPDQuoteImagesView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LPDQuoteImagesView-prefix.pch"; sourceTree = "<group>"; };
-		A393DFFB13C491967275A05042B3C205 /* Pods-LPDQuoteImagesView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LPDQuoteImagesView_Example.modulemap"; sourceTree = "<group>"; };
-		ABE06652FFD1D973C7CE8FCE6F7EBABD /* LPDQuoteImagesView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = LPDQuoteImagesView.modulemap; sourceTree = "<group>"; };
+		A393DFFB13C491967275A05042B3C205 /* Pods-LPDQuoteImagesView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-LPDQuoteImagesView_Example.modulemap"; sourceTree = "<group>"; };
+		ABE06652FFD1D973C7CE8FCE6F7EBABD /* LPDQuoteImagesView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = LPDQuoteImagesView.modulemap; sourceTree = "<group>"; };
 		ACF8C1AD5D1AB69A3ECB7AD284A51302 /* LPDProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDProgressView.m; sourceTree = "<group>"; };
 		B0048F99B8CB347934A15F1514E7BD32 /* LPDPhotoPreviewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LPDPhotoPreviewCell.m; sourceTree = "<group>"; };
 		BB67785623943EBE57BE99950951440D /* Pods-LPDQuoteImagesView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPDQuoteImagesView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -116,7 +120,7 @@
 		CB7913B12388AE1BA08928B4C0997DA5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CEE87A812BBBC062763B636201C8FC5D /* Pods-LPDQuoteImagesView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPDQuoteImagesView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		D2BBD107560AAB3D55DAF71CE6FE85D1 /* Pods_LPDQuoteImagesView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LPDQuoteImagesView_Example.framework; path = "Pods-LPDQuoteImagesView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2BBD107560AAB3D55DAF71CE6FE85D1 /* Pods_LPDQuoteImagesView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPDQuoteImagesView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D85DFAA0E73AB39C6FE30C30BE36AB5E /* UIView+HandyValue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+HandyValue.m"; sourceTree = "<group>"; };
 		E02EE81F269881C1A14AABBB4CBF4641 /* Pods-LPDQuoteImagesView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPDQuoteImagesView_Example-resources.sh"; sourceTree = "<group>"; };
 		E67D4302A7B9212D8FC31137F6E84DC9 /* UIView+HandyValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+HandyValue.h"; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		419E1E3A7690D3CA546D27D868DF568C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				186D8ED8208DDD16005B3AF6 /* ZDeleteRegionView.h */,
+				186D8ED9208DDD16005B3AF6 /* ZDeleteRegionView.m */,
 				39477E958F0FEF7652327646C1724B81 /* LPDAssetCell.h */,
 				19F881D2D1C93D88937F785ADF992972 /* LPDAssetCell.m */,
 				846A65788D764160D2C6DFA04431C435 /* LPDAssetModel.h */,
@@ -227,7 +233,6 @@
 				E67D4302A7B9212D8FC31137F6E84DC9 /* UIView+HandyValue.h */,
 				D85DFAA0E73AB39C6FE30C30BE36AB5E /* UIView+HandyValue.m */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -236,7 +241,6 @@
 			children = (
 				8002BF867EF7CCBE0ABEF2A4C62CC870 /* LPDImagePickerController.bundle */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -263,7 +267,6 @@
 			children = (
 				4A177C2D62D2C8C6EFC1E2CBFA502739 /* Assets */,
 			);
-			name = LPDQuoteImagesView;
 			path = LPDQuoteImagesView;
 			sourceTree = "<group>";
 		};
@@ -283,7 +286,6 @@
 			children = (
 				419E1E3A7690D3CA546D27D868DF568C /* Classes */,
 			);
-			name = LPDQuoteImagesView;
 			path = LPDQuoteImagesView;
 			sourceTree = "<group>";
 		};
@@ -372,6 +374,7 @@
 				0313A6FDB095840BC197EF37340E799C /* LPDPhotoPickerController.h in Headers */,
 				17001C0E1216EF4E213A272B7BDFE834 /* LPDPhotoPreviewCell.h in Headers */,
 				5B9512D5ECF7C694AFD617D15DBD7E8C /* LPDPhotoPreviewController.h in Headers */,
+				186D8EDA208DDD16005B3AF6 /* ZDeleteRegionView.h in Headers */,
 				637754ADCBFEDA0389824B84B5E834EE /* LPDProgressView.h in Headers */,
 				36D932303782F382E554B20D3AC7AA92 /* LPDQuoteImagesView-umbrella.h in Headers */,
 				00F0E86CD7E930C3544E39B2BF204BCC /* LPDQuoteImagesView.h in Headers */,
@@ -485,6 +488,7 @@
 				FCAA732359A6F773005FA049DE5A5152 /* LPDAssetCell.m in Sources */,
 				A5DE006F0856D7A8F7B17B5A0696A18A /* LPDAssetModel.m in Sources */,
 				17A3C738C27D8C86F359CB7A1841F105 /* LPDImageManager.m in Sources */,
+				186D8EDB208DDD16005B3AF6 /* ZDeleteRegionView.m in Sources */,
 				5E95C609E5B3462B8094D2DB4930D028 /* LPDImagePickerController.m in Sources */,
 				080EEA2137F2CD79EE8EAA19CBD07055 /* LPDPhotoArrangeCell.m in Sources */,
 				F29D2085CBE7CAFE53DD85CA993BE5C2 /* LPDPhotoArrangeCVlLayout.m in Sources */,

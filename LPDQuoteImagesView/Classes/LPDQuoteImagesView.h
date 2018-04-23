@@ -41,6 +41,8 @@
 
 @property (weak, nonatomic) UIViewController<LPDQuoteImagesViewDelegate>* navcDelegate;
 
+@property (nonatomic, copy) dispatch_block_t finishBlock;/**自定义点击完成的回调Block*/
+
 - (instancetype)initWithFrame:(CGRect)frame withCountPerRowInView:(NSUInteger)ArrangeCount cellMargin:(CGFloat)cellMargin;
 
 @end

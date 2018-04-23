@@ -8,10 +8,11 @@
 
 #import "LPDPhotoArrangeCVlLayout.h"
 #import "LPDPhotoArrangeCell.h"
+#import "ZDeleteRegionView.h"
 
 #define stringify   __STRING
 
-static CGFloat const PRESS_TO_MOVE_MIN_DURATION = 0.1;
+static CGFloat const PRESS_TO_MOVE_MIN_DURATION = 0.5;
 static CGFloat const MIN_PRESS_TO_BEGIN_EDITING_DURATION = 0.6;
 
 CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
@@ -20,6 +21,10 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
 }
 
 @interface LPDPhotoArrangeCVlLayout () <UIGestureRecognizerDelegate>
+
+/** 删除视图*/
+@property (nonatomic, strong) ZDeleteRegionView *deleteRegionView;
+
 
 @property (nonatomic,readonly) id<LPDPhotoArrangeCVDataSource> dataSource;
 @property (nonatomic,readonly) id<LPDPhotoArrangeCVFlowLayout> delegate;
@@ -86,9 +91,9 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
     
     [self.collectionView addGestureRecognizer:_longPressGestureRecognizer];
     
-    _panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureRecognizerTriggerd:)];
-    _panGestureRecognizer.delegate = self;
-    [self.collectionView addGestureRecognizer:_panGestureRecognizer];
+    //    _panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureRecognizerTriggerd:)];
+    //    _panGestureRecognizer.delegate = self;
+    //    [self.collectionView addGestureRecognizer:_panGestureRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
 }
@@ -162,6 +167,11 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
 
 - (void)longPressGestureRecognizerTriggerd:(UILongPressGestureRecognizer *)longPress
 {
+    //记录上一次手势的位置
+    static CGPoint startPoint;
+    
+    BOOL isIn = CGRectIntersectsRect([_beingMovedPromptView convertRect:_beingMovedPromptView.bounds toView:[UIApplication sharedApplication].keyWindow], [self.deleteRegionView convertRect:self.deleteRegionView.bounds toView:[UIApplication sharedApplication].keyWindow]);
+    
     switch (longPress.state) {
         case UIGestureRecognizerStatePossible:
             break;
@@ -188,14 +198,15 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
             UICollectionViewCell *sourceCollectionViewCell = [self.collectionView cellForItemAtIndexPath:_movingItemIndexPath];
             LPDPhotoArrangeCell *sourceCell = (LPDPhotoArrangeCell *)sourceCollectionViewCell;
             
-            _beingMovedPromptView = [[UIView alloc]initWithFrame:CGRectOffset(sourceCollectionViewCell.frame, -10, -10)];
+            //            _beingMovedPromptView = [[UIView alloc]initWithFrame:CGRectOffset(sourceCollectionViewCell.frame, -10, -10)];
+            _beingMovedPromptView = [[UIView alloc]initWithFrame:CGRectMake(self.collectionView.superview.superview.frame.origin.x + sourceCollectionViewCell.frame.origin.x + 10, self.collectionView.superview.superview.frame.origin.y + sourceCollectionViewCell.frame.origin.y + 10, sourceCollectionViewCell.frame.size.width, sourceCollectionViewCell.frame.size.height)];
             
-            CGRect frameW = _beingMovedPromptView.frame;
-            frameW.size.width += 20;
-            _beingMovedPromptView.frame = frameW;
-            CGRect frameH = _beingMovedPromptView.frame;
-            frameH.size.height += 20;
-            _beingMovedPromptView.frame = frameH;
+            //            CGRect frameW = _beingMovedPromptView.frame;
+            //            frameW.size.width += 20;
+            //            _beingMovedPromptView.frame = frameW;
+            //            CGRect frameH = _beingMovedPromptView.frame;
+            //            frameH.size.height += 20;
+            //            _beingMovedPromptView.frame = frameH;
             
             sourceCollectionViewCell.highlighted = YES;
             UIView * highlightedSnapshotView = [sourceCell snapshotView];
@@ -209,12 +220,12 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
             
             [_beingMovedPromptView addSubview:snapshotView];
             [_beingMovedPromptView addSubview:highlightedSnapshotView];
-            [self.collectionView addSubview:_beingMovedPromptView];
+            [self.collectionView.superview.superview.superview addSubview:_beingMovedPromptView];
             
             _sourceItemCollectionViewCellCenter = sourceCollectionViewCell.center;
             
             typeof(self) __weak weakSelf = self;
-            [UIView animateWithDuration:0
+            [UIView animateWithDuration:0.2
                                   delay:0
                                 options:UIViewAnimationOptionBeginFromCurrentState
                              animations:^{
@@ -223,6 +234,7 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
                                  if (strongSelf) {
                                      highlightedSnapshotView.alpha = 0;
                                      snapshotView.alpha = 1;
+                                     _beingMovedPromptView.alpha = 0.8f;
                                  }
                              }
                              completion:^(BOOL finished) {
@@ -238,17 +250,41 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
                              }];
             
             [self invalidateLayout];
+            
+            startPoint = [longPress locationInView:self.collectionView.superview.superview.superview];
+            
+            [self.deleteRegionView showInView:[UIApplication sharedApplication].keyWindow];
         }
             break;
         case UIGestureRecognizerStateChanged:
+        {
+            
+            CGFloat tranX = [longPress locationOfTouch:0 inView:self.collectionView.superview.superview.superview].x  - startPoint.x;
+            CGFloat tranY = [longPress locationOfTouch:0 inView:self.collectionView.superview.superview.superview].y - startPoint.y;
+            //设置截图视图位置
+            _beingMovedPromptView.center = CGPointApplyAffineTransform(_beingMovedPromptView.center, CGAffineTransformMakeTranslation(tranX, tranY));
+            
+            [self.deleteRegionView setStatusIsIn:isIn];
+            
+            startPoint = [longPress locationOfTouch:0 inView:self.collectionView.superview.superview.superview];
+        }
             break;
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         {
+            
+            [self.deleteRegionView hide];
+            
             [_displayLink invalidate];
             _displayLink = nil;
             
             NSIndexPath * movingItemIndexPath = _movingItemIndexPath;
+            
+            if (isIn && _beingMovedPromptView) {
+                //进入区域，准备删除
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"DeleteCellOfPhoto" object:self userInfo:@{@"IndexPath" : [NSString stringWithFormat:@"%zd", _movingItemIndexPath.row]}];
+            }
             
             if (movingItemIndexPath) {
                 if ([self.delegate respondsToSelector:@selector(collectionView:layout:willEndDraggingItemAtIndexPath:)]) {
@@ -269,7 +305,7 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
                                  animations:^{
                                      typeof(self) __strong strongSelf = weakSelf;
                                      if (strongSelf) {
-                                         _beingMovedPromptView.center = movingItemCollectionViewLayoutAttributes.center;
+                                         //                                         _beingMovedPromptView.center = movingItemCollectionViewLayoutAttributes.center;
                                      }
                                  }
                                  completion:^(BOOL finished) {
@@ -305,7 +341,7 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
         case UIGestureRecognizerStateBegan:
         case UIGestureRecognizerStateChanged:
         {
-            CGPoint panTranslation = [pan translationInView:self.collectionView];
+            CGPoint panTranslation = [pan translationInView:self.collectionView.superview.superview.superview];
             _beingMovedPromptView.center = CGPointOffset(_sourceItemCollectionViewCellCenter, panTranslation.x, panTranslation.y);
             
             NSIndexPath * sourceIndexPath = _movingItemIndexPath;
@@ -403,6 +439,13 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
 {
     _panGestureRecognizer.enabled = NO;
     _panGestureRecognizer.enabled = YES;
+}
+
+- (ZDeleteRegionView *)deleteRegionView{
+    if (!_deleteRegionView) {
+        _deleteRegionView = [[ZDeleteRegionView alloc] init];
+    }
+    return _deleteRegionView;
 }
 
 @end
