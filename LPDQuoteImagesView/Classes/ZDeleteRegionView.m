@@ -7,18 +7,19 @@
 //
 
 #import "ZDeleteRegionView.h"
+#import "UIImage+MyBundle.h"
 
 #define ZDeleteRegionViewHeight  60.0f
 
 @implementation ZDeleteRegionView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -47,7 +48,7 @@
     _o_textLabel.textColor = [UIColor whiteColor];
     _o_textLabel.font = [UIFont systemFontOfSize:10];
     _o_textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+    
     
     [self addSubview:_o_imgView];
     [self addSubview:_o_textLabel];
@@ -60,11 +61,11 @@
 {
     if (isIn) {
         self.backgroundColor = [UIColor colorWithRed:207/255.0 green:79/255.0 blue:79/255.0 alpha:1];
-        _o_imgView.image = [UIImage imageNamed:@"delete_open"];
+        _o_imgView.image = [UIImage imageNamedFromMyBundle:@"delete_open.png"];
         _o_textLabel.text = @"松手即可删除";
     }else{
         self.backgroundColor = [UIColor colorWithRed:228/255.0 green:85/255.0 blue:86/255.0 alpha:1];
-        _o_imgView.image = [UIImage imageNamed:@"delete_close"];
+        _o_imgView.image = [UIImage imageNamedFromMyBundle:@"delete_close.png"];
         _o_textLabel.text = @"拖动到此处删除";
     }
 }
@@ -97,3 +98,4 @@
 }
 
 @end
+
