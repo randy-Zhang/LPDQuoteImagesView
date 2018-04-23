@@ -444,6 +444,7 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
 - (ZDeleteRegionView *)deleteRegionView{
     if (!_deleteRegionView) {
         _deleteRegionView = [[ZDeleteRegionView alloc] init];
+        _deleteRegionView.alpha = 0.8f;
     }
     return _deleteRegionView;
 }
