@@ -170,6 +170,7 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
     //记录上一次手势的位置
     static CGPoint startPoint;
     
+    //选中的图片是否进入删除区域
     BOOL isIn = CGRectIntersectsRect([_beingMovedPromptView convertRect:_beingMovedPromptView.bounds toView:[UIApplication sharedApplication].keyWindow], [self.deleteRegionView convertRect:self.deleteRegionView.bounds toView:[UIApplication sharedApplication].keyWindow]);
     
     switch (longPress.state) {
@@ -199,6 +200,8 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
             LPDPhotoArrangeCell *sourceCell = (LPDPhotoArrangeCell *)sourceCollectionViewCell;
             
             //            _beingMovedPromptView = [[UIView alloc]initWithFrame:CGRectOffset(sourceCollectionViewCell.frame, -10, -10)];
+            
+            //创建选中图片的复制View
             _beingMovedPromptView = [[UIView alloc]initWithFrame:CGRectMake(self.collectionView.superview.superview.frame.origin.x + sourceCollectionViewCell.frame.origin.x + 10, self.collectionView.superview.superview.frame.origin.y + sourceCollectionViewCell.frame.origin.y + 10, sourceCollectionViewCell.frame.size.width, sourceCollectionViewCell.frame.size.height)];
             
             //            CGRect frameW = _beingMovedPromptView.frame;
@@ -251,21 +254,22 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
             
             [self invalidateLayout];
             
+            //重设起始位置
             startPoint = [longPress locationInView:self.collectionView.superview.superview.superview];
-            
+            //显示删除区域
             [self.deleteRegionView showInView:[UIApplication sharedApplication].keyWindow];
         }
             break;
         case UIGestureRecognizerStateChanged:
         {
-            
+            //开始拖动
             CGFloat tranX = [longPress locationOfTouch:0 inView:self.collectionView.superview.superview.superview].x  - startPoint.x;
             CGFloat tranY = [longPress locationOfTouch:0 inView:self.collectionView.superview.superview.superview].y - startPoint.y;
             //设置截图视图位置
             _beingMovedPromptView.center = CGPointApplyAffineTransform(_beingMovedPromptView.center, CGAffineTransformMakeTranslation(tranX, tranY));
             
             [self.deleteRegionView setStatusIsIn:isIn];
-            
+            //重设起始位置
             startPoint = [longPress locationOfTouch:0 inView:self.collectionView.superview.superview.superview];
         }
             break;
@@ -282,7 +286,7 @@ CG_INLINE CGPoint CGPointOffset(CGPoint point, CGFloat dx, CGFloat dy)
             
             if (isIn && _beingMovedPromptView) {
                 //进入区域，准备删除
-                
+                //发送通知，删除选中图片
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"DeleteCellOfPhoto" object:self userInfo:@{@"IndexPath" : [NSString stringWithFormat:@"%zd", _movingItemIndexPath.row]}];
             }
             
